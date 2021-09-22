@@ -2,7 +2,7 @@
 FROM alpine:3.11
 
 # 作者
-MAINTAINER lupishan
+MAINTAINER llb
 
 # 添加glibc依赖
 RUN apk --no-cache add ca-certificates && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk && apk add glibc-2.29-r0.apk
@@ -10,9 +10,9 @@ RUN apk --no-cache add ca-certificates && wget -q -O /etc/apk/keys/sgerrand.rsa.
 # 安装jre
 ADD jre8.tar.gz /usr/java/jdk/
 
-# 设置时区GTM+8(打开注释设置时区)
-#ADD Shanghai  /etc/localtime
-#RUN echo "Asia/Shanghai" > /etc/timezone
+# 设置时区GTM+8(设置时区)
+ADD Shanghai  /etc/localtime
+RUN echo "Asia/Shanghai" > /etc/timezone
 
 # 设置变量
 
